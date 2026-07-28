@@ -1,4 +1,4 @@
-# Cleanora — Landing Page
+# Alex Rivera — Landing Page
 
 ![React](https://img.shields.io/badge/React-19-20232a?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite)
@@ -8,7 +8,7 @@
 ![React Router](https://img.shields.io/badge/React_Router_v6-CA4245?logo=reactrouter)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel)
 
-Production-grade marketing landing page for Cleanora — premium 1-on-1 fitness coaching. Built with React 19, Vite 8, Tailwind CSS v4, and shadcn/ui.
+Production-grade marketing landing page for Alex Rivera — premium 1-on-1 fitness coaching. Built with React 19, Vite 8, Tailwind CSS v4, and shadcn/ui.
 
 ---
 
@@ -163,4 +163,4 @@ npx vercel --prod
 
 ## Author
 
-**Cleanora** — Premium 1-on-1 Fitness Coaching
+**Alex Rivera** — Premium 1-on-1 Fitness Coaching
