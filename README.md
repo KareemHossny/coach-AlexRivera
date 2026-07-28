@@ -1,92 +1,166 @@
-<div align="center">
-  <img src="https://res.cloudinary.com/dwdasucfu/image/upload/v1783398333/ChatGPT_Image_Jul_7_2026_07_25_13_AM_hssgjc.png" alt="Alex Rivera" height="64" />
-  <h1 align="center">Alex Rivera</h1>
-  <p align="center">Elite Performance Coach — Los Angeles, CA</p>
-  <p align="center">
-    <a href="https://coach-alexrivera.vercel.app">alexrivera.coach</a>
-  </p>
-  <p align="center">
-    <img src="https://img.shields.io/badge/NASM-CPT-blue" alt="NASM CPT" />
-    <img src="https://img.shields.io/badge/Precision_Nutrition-L2-brightgreen" alt="Precision Nutrition L2" />
-    <img src="https://img.shields.io/badge/12_Years_Coaching-ff6b35" alt="12 years" />
-    <img src="https://img.shields.io/badge/500%2B_Clients-8b5cf6" alt="500+ clients" />
-    <img src="https://img.shields.io/badge/4.9%E2%98%85_Avg_Rating-gold" alt="4.9 star rating" />
-  </p>
-</div>
+# Cleanora — Landing Page
+
+![React](https://img.shields.io/badge/React-19-20232a?logo=react)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?logo=tailwindcss)
+![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000)
+![React Router](https://img.shields.io/badge/React_Router_v6-CA4245?logo=reactrouter)
+![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel)
+
+Production-grade marketing landing page for Cleanora — premium 1-on-1 fitness coaching. Built with React 19, Vite 8, Tailwind CSS v4, and shadcn/ui.
 
 ---
 
-Premium 1-on-1 fitness coaching for ambitious people who are done settling. Custom training, nutrition built around your life, and the accountability to actually follow through.
+## Architecture
 
-## About
+```
+index.html            → Vite HTML entry point
+src/
+├── main.tsx           → React root + BrowserRouter
+├── App.tsx            → Routes, error boundary, 404
+├── styles.css         → Tailwind v4 + design tokens (oklch)
+├── config/
+│   └── site.ts        → Single source of truth for all content
+├── components/
+│   ├── sections/      → Page sections (Nav, Hero, Services, etc.)
+│   └── ui/            → shadcn/ui primitives (Radix-based)
+├── hooks/
+│   └── use-mobile.tsx → Responsive breakpoint hook
+└── lib/
+    └── utils.ts       → cn() class-merging utility
+```
 
-I've spent the last twelve years coaching people who don't have time for guesswork — executives, athletes, parents, founders. My approach is simple: build a plan around your real life, measure what matters, and adjust every week.
+### Component Tree
 
-This site is my home on the web — a place for prospective clients to learn about my coaching philosophy, see real transformations, understand my process, and apply for coaching.
+```
+<App>
+  <ErrorBoundary>
+    <Routes>
+      <Route "/" → <Home>
+        <Nav />
+        <main>
+          <Hero />          ← Stats, CTA, badges
+          <Transformations /> ← Client results grid
+          <Services />        ← 6 service cards
+          <Process />         ← 4-step workflow
+          <Testimonials />    ← Client quotes
+          <Coach />           ← Bio + credentials
+          <Pricing />         ← 3-tier pricing table
+          <FAQ />             ← Accordion
+          <LeadForm />        ← Lead capture
+          <FinalCTA />        ← Bottom CTA
+        </main>
+        <Footer />
+        <Toaster />
+      </Route>
+      <Route "*" → <NotFound /> />  ← 404 page
+    </Routes>
+  </ErrorBoundary>
+</App>
+```
 
-## What's Inside
-
-- **Hero** — brand introduction with stats (500+ clients, 4.9★ rating, 12 yrs experience, 94% goal completion)
-- **Transformations** — real client results with before/after imagery
-- **Services** — 1-on-1 coaching, custom nutrition, personalised training, weekly check-ins, accountability system, lifestyle integration
-- **Process** — four-step journey from application to results
-- **Testimonials** — client stories
-- **Coach Bio** — credentials, certifications, and background
-- **Pricing** — Starter ($249/mo), Premium ($449/mo), VIP (custom)
-- **FAQ** — answers to common questions
-- **Lead Form** — apply for coaching
+---
 
 ## Tech Stack
 
-| | |
-|---|---|
-| **Framework** | ![React](https://img.shields.io/badge/React-20232a?logo=react) 19 |
-| **Build** | ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite) 8 |
-| **Language** | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript) |
-| **Styling** | ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss) v4 + shadcn/ui |
-| **Routing** | ![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=reactrouter) v6 |
-| **Icons** | ![Lucide](https://img.shields.io/badge/Lucide-8b5cf6) |
-| **Deployment** | ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel) |
+| Category | Tools |
+|----------|-------|
+| Framework | React 19 |
+| Build | Vite 8 + TypeScript 5 |
+| Styling | Tailwind CSS v4, tw-animate-css, CSS custom properties (oklch) |
+| UI Library | shadcn/ui (Radix primitives — Accordion, Dialog, DropdownMenu, etc.) |
+| Routing | React Router v6 (BrowserRouter) |
+| Icons | Lucide React |
+| Forms | react-hook-form, zod |
+| Toast | Sonner |
+| Charts | Recharts |
+| Carousel | Embla Carousel |
+| Deployment | Vercel (static SPA) |
 
-## Getting Started
+### shadcn/ui Components Included
+
+Accordion, Alert, AlertDialog, AspectRatio, Avatar, Badge, Breadcrumb, Button, Calendar, Card, Carousel, Chart, Checkbox, Collapsible, Command, ContextMenu, Dialog, Drawer, DropdownMenu, Form, HoverCard, Input, InputOTP, Label, Menubar, NavigationMenu, Pagination, Popover, Progress, RadioGroup, Resizable, ScrollArea, Select, Separator, Sheet, Sidebar, Skeleton, Slider, Switch, Table, Tabs, Textarea, Toggle, ToggleGroup, Tooltip.
+
+---
+
+## Sections
+
+| Section | Description |
+|---------|-------------|
+| **Nav** | Fixed top bar with logo, navigation links, CTA button |
+| **Hero** | Headline, subheadline, primary/secondary CTAs, credential badges, stats bar (500+ clients, 4.9★, 12 yrs, 94%) |
+| **Transformations** | Client result cards with images and descriptions |
+| **Services** | 6-column service grid (1-on-1 Coaching, Nutrition, Training, Check-Ins, Accountability, Lifestyle) |
+| **Process** | 4-step horizontal workflow (Apply → Consultation → Plan → Results) |
+| **Testimonials** | Client quote cards with avatars |
+| **Coach** | Bio section with photo, text, credential list |
+| **Pricing** | 3-tier pricing (Starter $249/mo, Premium $449/mo, VIP Custom) |
+| **FAQ** | Accordion-style Q&A |
+| **LeadForm** | Name, email, phone, goal selector, message textarea |
+| **FinalCTA** | Bottom call-to-action |
+| **Footer** | Logo, blurb, contact info, link columns, social links |
+
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| — | — | No environment variables required. The site is fully static. |
+
+If you connect a backend (form handler, CRM, database), add keys to `.env` and reference via `import.meta.env.VITE_*`.
+
+---
+
+## Local Development
 
 ```bash
+# 1. Install dependencies
 npm install
+
+# 2. Start dev server
 npm run dev
+
+# 3. Build for production
+npm run build
+
+# 4. Preview production build
+npm run preview
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+---
 
-### Build
+## Customization
 
-```bash
-npm run build     # type-check + production build
-npm run preview   # preview the production build locally
-```
+All content is driven by `src/config/site.ts`. To rebrand for your own business:
 
-## Lead Form
+| Field | Location |
+|-------|----------|
+| Brand name, logo, tagline | `coach.name`, `coach.logo` |
+| Hero headline + CTA | `hero.headline`, `hero.primaryCta` |
+| Services | `services[]` |
+| Pricing | `pricing.plans[]` |
+| Testimonials | `testimonials[]` |
+| FAQ | `faqs[]` |
 
-Submissions go nowhere yet — it shows a success toast. To collect leads, wire the `handleSubmit` function in `src/components/sections/LeadForm.tsx` to your email service, CRM, or database.
+Design tokens (colors, fonts, shadows) are in `src/styles.css` under `:root`.
 
-## Deploy
+---
 
-1. Push to GitHub.
-2. Import the repo in [Vercel](https://vercel.com).
-3. Deploy — no configuration needed.
+## Deployment (Vercel)
+
+1. Push to GitHub and import to Vercel
+2. No configuration needed — Vite is auto-detected
+3. SPA fallback (`vercel.json`) ensures client-side routes resolve correctly on refresh
 
 ```bash
 npm run build
 npx vercel --prod
 ```
 
-## Contact
-
-- Email: [hello@alexrivera.coach](mailto:hello@alexrivera.coach)
-- Phone: +1 (555) 010-2024
-- Location: Los Angeles, CA
-
 ---
 
-<div align="center">
-  <p>Designed for results.</p>
-</div>
+## Author
+
+**Cleanora** — Premium 1-on-1 Fitness Coaching
